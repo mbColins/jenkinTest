@@ -20,6 +20,8 @@ public class AvailabilityService {
     private final AvailabilityRepository availabilityRepository;
     private final MessageSource messageSource;
 
+
+
     public AvailabilityService(AvailabilityRepository availabilityRepository, MessageSource messageSource) {
         this.availabilityRepository = availabilityRepository;
         this.messageSource = messageSource;
