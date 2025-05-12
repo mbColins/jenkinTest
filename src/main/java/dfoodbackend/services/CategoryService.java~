@@ -1,0 +1,27 @@
+package dfoodbackend.services;
+
+import dfoodbackend.Utils.Utils;
+import dfoodbackend.dto.CategoryDto;
+import dfoodbackend.entity.Category;
+import dfoodbackend.repositories.CategoryRepository;
+import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
+
+@Service
+public class CategoryService {
+
+    private final CategoryRepository categoryRepository;
+
+    public CategoryService(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
+    }
+
+    public Mono<String> addCategory(Mono<CategoryDto> categoryDtoMono) {
+        return categoryDtoMono
+                .map(Utils::categoryEntityToDto)
+                .flatMap(categoryRepository::insert)
+                .map(Category::getId);
+    }
+
+
+}

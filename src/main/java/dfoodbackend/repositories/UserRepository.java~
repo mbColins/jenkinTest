@@ -1,0 +1,4 @@
+package dfoodbackend.repositories;
+
+public interface UserRepository {
+}
